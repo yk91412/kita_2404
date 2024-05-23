@@ -349,7 +349,7 @@ SELECT *
 
    4. 데이터 무결성 유지 : 수정하더라도 변경사항이 기본 테이블에 영향 x
 
-    ex) create table 만들 테이블명 as
+    ex) create view 만들 테이블명 as
       select 추출하고 싶은 컬럼명
       from 기존 테이블명
       where (원하는 조건이 있을 때)
