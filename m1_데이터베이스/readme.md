@@ -181,11 +181,11 @@ SELECT *
 
     RANK() OVER(ORDER BY 컬럼명 (ASC|DESC)) (AS 별칭)
 
-    * densc_rank() over
+    * dense_rank() over
 
       중복순위 발생시 다음 순위를 연속된 값을 부여
 
-      ex) 90,80,80 => 1,2,2...
+      ex) 90,80,80,70 => 1,2,2,3...
 
     * row_number() over
 
