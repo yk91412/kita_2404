@@ -1,0 +1,126 @@
+
+
+
+- pivot 테이블
+
+  원하는 df 이름 = df명.pivot_table(index=~,columns=~,values=~,aggfunc=~)
+
+  index별 values를 원한다면 columns 제외
+
+  여러 컬럼을 사용할 시 대괄호
+
+
+  => *** 인덱스만 같은 피벗테이블을 합치고 싶을 때
+
+   1. 한 컬럼의 인덱스 명을 다른 인덱스명으로 바꾸고
+
+    pivot1.index.rename(~, inplace=True)
+
+   2. merge로 합친다
+    
+    새 테이블명 = pd.merge(pivot, pivot1, left_index=True, right_index=True)
+
+    * left_index=True, right_index=True
+
+    * 각 피벗 테이블의 인덱스를 기준으로 병합을 수행하도록 설정
+
+
+  ** 인덱스, 컬럼명 이름 수정
+
+  테이블명.index.names = ~
+
+  테이블명.columns= ~
+
+
+
+
+
+  - cut 함수
+
+    bins = [~] : 구간
+
+    labels = [~] : 구간 사이 라벨
+
+    df['새 컬럼 이름'] = pd.cut(df['사용할 컬럼명'], bins = bins, labels = labels ,right=False)
+
+      right = False : 왼쪽 경계는 포함하고 오른쪽 경계는 미포함
+
+
+
+    *** df명.rename(columns={'원래 컬럼명':'새 컬럼명'...})
+
+
+
+
+
+
+    - df 값 수정
+
+      df['수정할 컬럼'] = df명.apply(lambda x : def~ , axis = 1)
+
+      기본이 axis = 0이라서 각 행(row)에서 처리를 할 수 있도록 axis = 1을 지정
+
+
+
+
+
+
+    - 시각화
+
+      import matplotlib.pyplot as plt
+
+
+      * 두개의 df를 한 기준으로 시각화 하고싶을 때
+
+      ex) 연도별 구매 금액
+      
+      (2020년도) plt.plot(원하는 컬럼1, 컬럼2, marker = ~, label = ~)
+      
+      (2021년도) ~~
+
+
+      marker : 'o' 원 , 's' 정사각형 ...
+
+      import matplotlib.markers as mmarkers
+
+      print(mmarkers.MarkerStyle.markers)
+
+      => 전체 마커 목록
+
+
+
+
+      * 한 df를 인덱스 기준으로 컬럼을 나타내고 싶을 때
+      
+      테이블명.plot(kind = ~, figure=~, color = ~)
+
+      kind = line(기본), bar(세로막대), barh(가로막대), hist
+
+
+
+      원하는 그래프가 두 개 일 때 
+      
+      plt.legend() 를 사용해서 범례 추가할 수 있다
+
+
+
+      plt.title(~) : 그래프 제목
+
+      plt.xlabel(~) : x축 제목
+
+      plt.ylabel(~) : y축 제목
+
+      plt.grid(True) : 그리드 추가
+      
+      plt.xticks(rotation=45) : x축 각도 조절
+
+      plt.tight_layout() : 서브플롯 간의 간격을 자동으로 조정하여 플롯이 겹치지 않도록 
+
+
+ => 인덱스 순서 바꾸고 싶을 때
+
+ 원하는 순서 리스트 만들고
+
+ 테이블명.reindex(원하는 순서 리스트)
+
+      
