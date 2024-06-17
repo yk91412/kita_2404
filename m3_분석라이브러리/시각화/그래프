@@ -1,0 +1,205 @@
+
+
+- 여러 그래프 같이 그리기
+
+  ** subplots
+
+  fig, axes = plt.subplots(nrow=~,ncol=~,figsize=(~))
+
+  ** 사이즈 크기 조정
+
+  plt.figure(figsize=(~))
+
+
+  ** add_suplot
+
+  fig = plt.figure(figsize=(~))
+
+  ax1 = fig.add_subplot(2,2,1)
+
+  ...
+
+  각 각 지정(2행 2열 1번째, ..4번째)
+
+  ax1.hist(~,bins,color=~)
+
+
+=======================================================
+
+
+
+- 선 그래프
+
+  시간에 따른 데이터 변화를 시각화하는데 유용
+
+  .plot(ax=axes[subplot할 경우]), title =~)
+
+
+- 히스토그램
+
+  데이터 분포를 시각화하는데 유용
+
+  .plot(kind='hist',ax=axes[사용할 경우], title=~)
+
+
+
+
+- 막대 그래프
+
+  카테고리형 데이터에 유용
+
+ (수평 막대 그래프(barh) : 누적 옵션, 투명도 적용 가능)
+
+
+  .plot(kind='bar' ...)
+
+  .plot.bar(ax=axes~...)
+
+
+- 박스 플롯
+
+  데이터의 분포와 분산 정도
+
+  이상치 확인하는데 유용
+
+  .plot(kind='box',ax~,title=~)
+
+
+
+
+- 산점도
+
+  두 변수간의 관계 시각화하여 상관관계 확인
+
+  .plot(kind='scatter', 뒤에 똑같음)
+
+  .plot(kind='scatter', x= '~', y='~' ...)
+
+
+
+
+
+- 면적 그래프
+
+  stacked = False : 두 시리즈가 겹치지 않도록 하는 옵션
+
+  시간에 따른 데이터의 변화를 누적하여 시각화하는데 유용
+
+  여러 시계열 데이터를 하나의 플롯에 그릴 수 있으며, 누적된 값의 변화를 시각적으로 쉽게 파악
+
+  .cumsum().plot(kind='area'...)
+
+
+
+- 파이 차트
+
+  카테고리형 데이터의 비율을 시각화하는데 유용
+
+  .value_counts().plot(kind='pie' ..)
+
+   => 그리는 방법은 많다
+      
+        ex) 특정 값 비율 계산 후 그래프 그리기
+
+
+
+
+- 커널 밀도 추정 그래프(KDE)
+
+  데이터의 확률 밀도 함수를 시각화하며, 데이터의 분포를 부드럽게 표현
+
+  .plot(kind='kde' ..)
+
+=======================================================
+
+ - 누적 그래프 그리기
+
+    stacked = True 사용
+
+
+
+=====================================================
+
+- .div
+
+- set_title
+
+  ex) axes[0].set_title('~')
+
+- 1차원 배열 일 땐 1차원 인덱스 사용
+
+  ex) 4행 1열 subplots시 axes[0] [1]...로 사용
+
+- color = 'k' 식으로 색상 지정 가능
+
+- size를 사용하여 title, xlabel, ylaebl 크기 조정 할 수 있다
+
+- markersize로 marker 크기도 지정 가능
+
+- legend(title=~) : 범례의 title을 지정할 수 있다
+
+- 'k--' : 선 스타일
+
+
+=======================================================
+
+- matplotlib
+
+histogram : plt.hist(x, bins= )
+
+line plot : plt.plot(x,y)
+
+plt.bar(x,y, width= , color='')
+
+scatter plot : plt.scatter(x, y):
+
+- seaborn
+
+sns.distplot(data, bins=, color=, kde=), histplot, displot으로 변경
+
+sns.boxplot(x, y, data, color)
+
+sns.violinplot(x, y, data, color)
+
+sns.barplot(x, y, data, color)
+
+sns.jointplot(x, y, data, color)
+
+sns.pairplot(data, hue, palette)
+
+sns.lmplot(x,y,data,color)
+
+sns.regplot(x,y,data,fig_reg=False)
+
+sns.heatmap(data,)
+
+
+=======================================================
+
+matplot에서 사용 가능한 스타일
+
+plt.style.available
+
+
+=======================================================
+
+** 한국어 설정
+
+
+- 설치 후 세션 다시 시작
+
+- Google Colab에는 한국어 글꼴이 사전 설치되어 있지 않으므로 수동으로 설치
+
+!sudo apt-get install -y fonts-nanum #NanumBarunGothic 글꼴을 설치
+
+!sudo fc-cache -fv #글꼴 캐시를 새로 고치고
+
+!rm ~/.cache/matplotlib - rf #mat 캐시를 지운다
+
+
+
+!sudo apt-get install -y fonts-nanum
+
+!sudo fc-cache -fv
+
+!rm -rf ~/.cache/matplotlib
