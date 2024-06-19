@@ -288,3 +288,49 @@ url = 'http://example.com'
     - input 입력 하겠다 / 닫히는 태그 없음
 
     - input type  => 넣을 타입
+
+
+
+
+
+  - 이미지 속성
+
+    주로 이미지 요소에서 사용되는 속성들
+
+    <img src="image.jpg" alt="Example Image" width="200" height="100">
+
+    - src: 이미지 파일의 경로
+
+    - alt: 이미지가 표시되지 않을 때 대체 텍스트
+
+    - width와 height: 이미지의 크기 지정
+
+    
+
+    - 링크 속성
+
+      주로 앵커(a) 태그에서 사용되는 속성들
+
+    <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">Visit Example</a>
+
+        - href: 링크의 URL
+    
+        - target: 링크를 열 방법 (_blank, _self, _parent, _top)
+    
+        - rel: 링크와 현재 문서 간의 관계
+
+
+    - 메타 데이터 속성
+
+      주로 meta 태그에서 사용되는 속성들
+
+
+    <meta name="description" content="This is an example of a meta description.">
+    <meta charset="UTF-8">
+
+
+        - name: 메타 데이터의 이름 (예: description, keywords)
+    
+        - content: 메타 데이터의 내용
+    
+        - charset: 문서의 문자 인코딩
