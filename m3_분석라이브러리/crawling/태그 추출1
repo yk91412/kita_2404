@@ -127,12 +127,14 @@
   - urllib + bs
 
 
+  import urllib.requests as rq
 
 
+  html = requests.get(url)
 
+  html = rq.urlopen(url)
 
-
-
+  => 결과는 동일하다
 
 
 
