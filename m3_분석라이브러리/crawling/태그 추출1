@@ -1,0 +1,28 @@
+
+## 과제 풀이
+
+  class가 content이면서 첫번째 p태그 찾기
+
+    => soup.find('p',class_ = 'content')
+
+    => soup.select_one('p.content')
+
+
+
+  다음에 위치한 모든 태그나 문자열 찾기
+
+
+  => .find_next()
+
+
+
+  이전에 위치한 모든 태그나 문자열 찾기
+
+
+  => .find_previous()
+
+
+
+
+
+
