@@ -164,7 +164,7 @@
   - urllib + bs
 
 
-  import urllib.requests as rq
+  import urllib.request as rq
 
 
   html = requests.get(url)
