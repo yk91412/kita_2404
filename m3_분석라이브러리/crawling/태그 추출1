@@ -82,14 +82,43 @@
   - 정규표현식 활용
 
 
+    re 모듈을 사용하여 특정 패턴을 가진 텍스트를 추출
+
+
+    ex) 형식
+
+    import re
+
+    pattern = r'~'
+
+    result = re.findall(pattern,문자열)
+
+  => 리스트 형태로 변수에 저장
 
 
 
 
+    ex) 이메일 주소 추출
+  
+    r'[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+'
+  
+  
+    ex) url 추출
+  
+    r'https?://[^\s<>]+|www\.[^\s<>]+'
 
 
+    ex) html 태그 내 텍스트 추출
+
+    r'>([^<]+)<'
 
 
+    ex) 정규 표현식으로 href에서 https인 것 추출하기
+
+    li = soup.find_all(href=re.compile(r"^https://"))
+    print(li,'\n')
+    for e in li:
+        print(e.attrs['href'])
 
 
 =====================================================================
@@ -113,6 +142,12 @@
 
 
   - 인코딩 에러를 해결
+
+ chardet.detect(response.content)['encoding']은 response.content의 인코딩 방식을 자동으로 감지하여 반환하며
+ 이 값을 encoding 변수에 저장한 후, response.content를 이 encoding 방식으로 디코딩하여 html 변수에 저장하0고 출력
+
+
+- chardet는 "Universal Character Encoding Detector"로, 다양한 인코딩을 감지할 수 있는 파이썬 패키지
 
 
 
