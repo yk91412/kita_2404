@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form method="POST" action="/edit/{{task_id}}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+        <p>
+            <!-- <label> 요소의 for 속성은 연결된 <input> 요소의 id 값을 받습니다. -->
+            <label for="title">제목</label><br />
+            <input type="text" name="title" id="title" size="32" value="{{ task_title }}" required />
+<!-- input type=text 한줄의 짧은 텍스트/ textarea 여러줄의 긴 텍스트 -->
+        </p>
+        <p>
+            <label for="contents">내용</label><br />
+            <textarea name = 'contents' id = 'contents' rows = '4' required>{{ task_contents }}</textarea>
+            <!-- <input type="text"> 요소에서는 value 속성을 사용하여 초기 값이나 사용자 입력 값을 설정합니다.
+<textarea> 요소에서는 시작 태그와 종료 태그 사이에 초기 텍스트를 삽입하거나, 동적으로 생성된 값을 출력합니다. -->
+        </p>
+        <p>
+            <label for="due_date">마감일</label><br />
+            <input type="date" name="due_date" id = "due_date" value="{{ task_due_date }}" required />
+        </p>
+        <p><input type = "submit" value = "Edit Task" /></p>
+        <!-- value="Edit Task"는 <input> 요소의 속성 중 하나로, 버튼이나 입력 필드의 초기 값을 설정하는 역할을 합니다. 
+         여기서 "Edit Task"는 버튼의 텍스트로, 사용자가 클릭할 때 버튼에 표시될 내용을 정의 -->
+    </form>
+    <p>등록일: {{ task_input_date }} </p>
+    <a href="/">Back to Task List</a>
+</body>
+</html>
