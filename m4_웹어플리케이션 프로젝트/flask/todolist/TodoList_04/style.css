@@ -1,0 +1,154 @@
+/* body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 10px;
+    background-color: #e0f7fa;
+  } */
+
+
+
+  body {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    min-height: 100vh; /* 화면의 최소 높이까지 채우도록 설정 */
+    margin: 0; /* 기본 마진 제거 */
+    background-color: #e0f7fa; /* 배경색 설정 */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 설정 */
+    flex-direction: column;
+}
+
+  h1 {
+    color: #4c7add;
+    text-align: center; /* 텍스트 가운데 정렬 */
+    /* margin-top: 20px; 헤더 위 여백 제거 */
+    /* margin-bottom: 20px; */
+
+}
+
+
+  header {
+    background-color: #007bff; /* 배경색 파랑색 */
+    color: #fff; /* 글자색 흰색 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    padding: 20px 0; /* 위아래 여백 설정 */
+    width: 100%; /* 너비 전체로 확장 */
+  } 
+
+  /* 폼과 작업 목록을 감싸는 div를 가운데 정렬하기 위한 스타일 */
+  .container {
+    width: 80%; /* 컨테이너의 너비 설정 */
+    max-width: 800px; /* 최대 너비 설정 */
+    background-color: #fff; /* 배경색 설정 */
+    padding: 20px; /* 안쪽 여백 설정 */
+    border-radius: 8px; /* 모서리 둥글게 설정 */
+    display: flex; /* Flexbox 사용 */
+    flex-direction: column; /* 컨테이너 내 아이템들을 세로로 정렬 */
+    align-items: center; /* 가로 가운데 정렬 */
+    margin-top: 20px;
+}
+  form{
+    /* margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    /* 수평 및 수직 이동없이 요소 주위에 부드럽고 퍼진 매우 옅은 검은색 그림자 */
+    background: #daabcf;
+    width: 100%; /* 폼의 너비를 100%로 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    margin-bottom: 20px; /* 폼 아래 여백 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.6); */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 6px;
+  }
+
+  form p {
+    width: 100%; /* p 요소의 너비를 100%로 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    margin-bottom: 15px; /* 입력 필드와 라벨 간의 여백 설정 */
+}
+  label{
+    font-weight: bold;
+    background-color: #350965;
+    border-radius: 6px
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea{
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #8d3939;
+    border-radius: 20px;
+  }
+
+  input[type="submit"]{
+    background-color: #6c95ee;
+    color: white;
+    /* 상하 / 좌우 */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover{
+    background-color: #a9caf0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin: 0; /* 바깥 여백 제거 */
+    width: 100%; /* ul 요소의 너비를 100%로 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+  }
+
+  li {
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  a{
+    margin-left: 10px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a:hover{
+    color: #004d40;
+    text-decoration: underline;
+  }
+  .centered{
+    text-align: center;
+  }
+
+  p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #33be3e;
+  }
+
+  footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #333;
+    text-align: center;
+    width: 100%; /* 너비 전체로 확장 */
+    position: fixed; /* 화면 하단에 고정 */
+    bottom: 0; /* 화면 아래에 위치 */
+}
+
+.custom-link{
+  color: #350965;
+  text-decoration: none;
+  transition: color 0.3s;
+}
