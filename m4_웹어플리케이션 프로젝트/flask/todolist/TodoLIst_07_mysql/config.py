@@ -1,0 +1,4 @@
+SECRET_KEY = '54c17cb2debe08a21fc4efce9d711b6435fc9e6e36669e91'
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///tasks.db'
+SQLALCHEMY_DATABASE_URI = 'mysql://user1:user1@localhost:3306/user1_db'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
