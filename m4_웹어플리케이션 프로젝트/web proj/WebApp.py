@@ -29,12 +29,15 @@ csrf = CSRFProtect(app)
 # Google Cloud Translation API 인증이 필요해서 인증 필요없는 library package 사용
 ## pip install googletrans==4.0.0rc1 필요
 ## pip install deepl 필요
+
+# 구글 번역
 def translate_keyword_g(keyword, target_language='en'):
     translator = Translator()
     keyword = keyword.replace(' ', '')
     translation = translator.translate(keyword, dest=target_language)
     return translation.text
-    
+
+# deepl 번역
 def translate_keyword_d(keyword):
     auth_key = "c6d7b043-1235-44d4-96bd-331cc0ec8c35:fx"
     translator = deepl.Translator(auth_key)
@@ -42,6 +45,7 @@ def translate_keyword_d(keyword):
     result = translator.translate_text(keyword, target_lang='EN-US')
     return result.text
 
+# 네이버 번역
 def translate_keyword_n(text):
     url = "https://naveropenapi.apigw.ntruss.com/nmt/v1/translation"
     headers = {"X-NCP-APIGW-API-KEY-ID": "3r1tnk1ohr", "X-NCP-APIGW-API-KEY": "twwiSo88HbmrNatHLlWYn618dWpK5P9XcD6B6Hkr"}
@@ -237,7 +241,7 @@ def search():
 
             top3_df = filtered_df_patents['Applicant'].value_counts().head(3).reset_index()
             if len(top3_df) < 3:
-                empty_rows = pd.DataFrame([[None, 0]] * (3 - len(top3_df)), columns=top3_df.columns)
+                empty_rows = pd.DataFrame([['N/A', 'N/A']] * (3 - len(top3_df)), columns=top3_df.columns)
                 top3_df = pd.concat([top3_df, empty_rows], ignore_index=True)
             top3_df.columns = ['출원인', '출원 건수']
             top3_table = top3_df.to_html(index=False, classes="table", escape=False) if not top3_df.empty else ""
@@ -256,7 +260,7 @@ def search():
             filtered_df_etc_domestic = filtered_df_patents[filtered_df_patents['applicant_lgrp'].isin(['etc', '국내기업'])]
             top5_df = filtered_df_etc_domestic['Applicant'].value_counts().head(10).reset_index()
             if len(top5_df) < 10:
-                empty_rows = pd.DataFrame([[None, 0]] * (10 - len(top5_df)), columns=top5_df.columns)
+                empty_rows = pd.DataFrame([['N/A', 'N/A']] * (10 - len(top5_df)), columns=top5_df.columns)
                 top5_df = pd.concat([top5_df, empty_rows], ignore_index=True)
             top5_df.columns = ['출원인', '출원 건수']
             
