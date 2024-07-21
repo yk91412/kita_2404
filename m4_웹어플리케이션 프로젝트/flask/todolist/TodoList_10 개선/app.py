@@ -29,6 +29,10 @@ pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
 app.config.from_object(Config)  # Config 클래스를 사용하여 설정을 로드합니다
+app.config['SQLALCHEMY_ECHO'] = True
+
+
+
 
 
 db.init_app(app)
@@ -172,6 +176,7 @@ def task_list():
 def add_task():
     if "user_id" not in session:
         return redirect(url_for("login"))
+    
     form = TaskForm()
     if form.validate_on_submit():
         title = form.title.data
@@ -179,32 +184,45 @@ def add_task():
         contents = form.contents.data
         start_date = form.start_date.data
         due_date = form.due_date.data
-        completion_date = (
-            form.completion_date.data if form.completion_date.data else None
-        )
+        completion_date = form.completion_date.data if form.completion_date.data else None
+        
+
         new_task = Task(
             title=title,
             filter=filter,
             contents=contents,
-            start_date = start_date,
+            start_date=start_date,
             due_date=due_date,
             completion_date=completion_date,
             user_id=session["user_id"],
+            link_path=form.link.data
         )
+
         # 파일 업로드 처리
         if form.file.data and isinstance(form.file.data, FileStorage):
-            filename = files.save(form.file.data)
-            new_task.file_path = filename
-        # if form.link.data and isinstance(form.link.data):
-        #     link =  form.link.data
-        
-        link = form.link.data
-        db.session.add(new_task)
-        db.session.commit()
-        flash("Task added successfully!", "success")
-        return redirect(url_for("task_list"))
+            try:
+                filename = files.save(form.file.data)
+                new_task.file_path = filename
+            except Exception as e:
+                flash(f"File upload failed: {e}", "danger")
+                return render_template("add_task.html", form=form)
+
+       
+
+        try:
+            db.session.add(new_task)
+            db.session.commit()
+            flash("Task added successfully!", "success")
+            return redirect(url_for("task_list"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Database commit failed: {e}", "danger")
+            return render_template("add_task.html", form=form)
+    
+    # CSRF 토큰 추가
     csrf_token = form.csrf_token._value()
     return render_template("add_task.html", form=form, csrf_token=csrf_token)
+
 
 
 @app.route("/edit/<int:task_id>", methods=["GET", "POST"])
@@ -247,7 +265,12 @@ def edit_task(task_id):
                 if os.path.exists(file_path):
                     os.remove(file_path)
                 task.file_path = None
-        task.link = form.link.data
+        # 링크 처리
+        if "remove_link" in request.form:
+            task.link_path = None
+        else:
+            task.link_path = form.link.data
+            
         db.session.commit()
         flash("Task edited successfully!", "success")
         return redirect(url_for("task_list"))
@@ -293,6 +316,7 @@ def download_file(filename):
     else:
         flash("File not found.", "danger")
         return redirect(url_for("task_list"))
+
 
 
 @app.route("/profile", methods=["GET", "POST"])

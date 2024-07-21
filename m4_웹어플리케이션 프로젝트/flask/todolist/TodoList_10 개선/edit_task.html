@@ -1,7 +1,3 @@
-  <!-- 시작일 / 마감일 / 완수일 -->
-   <!-- 과제 정리 -->
-    <!-- 주요 키워드 (요약) -->
-     <!-- 깃허브 링크 -->
 {% extends "base.html" %} {% block title %}Edit Task{% endblock %} {% block header %}Edit Task{% endblock %} {% block content %}
 <form method="POST" action="{{ url_for('edit_task', task_id=task.id) }}" class="mt-0" enctype="multipart/form-data">
   <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
@@ -11,13 +7,13 @@
   </div>
   <div class="form-group">
     <label for="filter">필터</label>
-    <select id="filter">
-      <option value="db">DB</option>
-      <option value="python">파이썬</option>
-      <option value="web">웹</option>
-      <option value="deeplearning">딥러닝</option>
-      <option value="machinelearning">머신러닝</option>
-  </select>
+    <select id="filter" name="filter" class="form-control">
+      <option value="db" {% if task.filter == 'db' %}selected{% endif %}>DB</option>
+      <option value="python" {% if task.filter == 'python' %}selected{% endif %}>파이썬</option>
+      <option value="web" {% if task.filter == 'web' %}selected{% endif %}>웹</option>
+      <option value="deeplearning" {% if task.filter == 'deeplearning' %}selected{% endif %}>딥러닝</option>
+      <option value="machinelearning" {% if task.filter == 'machinelearning' %}selected{% endif %}>머신러닝</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="contents">내용</label>
@@ -52,9 +48,9 @@
   </div>
   <div class="form-group">
     <label for="link">관련 링크</label>
-    <input type="link" name="link" id="link" class="form-control" />
+    <input type="url" name="link" id="link" class="form-control" value="{{ task.link_path }}" />
     {% if task.link_path %}
-    <p>현재 링크 : <a href="{{ url_for('link',filenmae=task.link_path)}}">{{ task.link_path }}</a></p>
+    <p>현재 링크: <a href="{{ task.link_path }}" target="_blank">{{ task.link_path }}</a></p>
     <label for="remove_link">기존 링크 삭제</label>
     <input type="checkbox" name="remove_link" id="remove_link" />
     {% endif %}
