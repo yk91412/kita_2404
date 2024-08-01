@@ -39,3 +39,89 @@
 
 
   콘텐츠 기반 필터링과 협업 필터링을 결합하여 각 접근 방식의 단점을 보완하고 장점을 극대화하는 방법
+
+  => 구현이 복잡하고 적절한 조합을 찾기 어려울 수 있음
+
+=======================================================
+
+
+* Surprise 패키지
+
+trainset, testset = train_test_split(data,test_size=0.25)
+
+변수 = 모델()
+변수.fit(trainset)
+
+prediction = 변수.test(testsset)
+
+print(accuracy.rmse(prediction)
+
+
+
+
+- 기본 알고리즘: NormalPredictor
+
+사용자나 아이템의 특성을 고려하지 않고, 단순히 평점의 분포를 기반으로 임의의 예측을 수행
+
+
+- 협업 필터링: KNNBasic, KNNWithMeans, KNNBaseline
+
+KNNBasic :
+사용자 기반 또는 아이템 기반의 최근접 이웃 협업 필터링을 수행
+
+-> 유사도를 계산하여 최근접 이웃을 찾고, 이웃의 평점을 기반으로 예측
+
+KNNWithMeans :
+
+NNBasic과 유사하지만, 각 사용자의 평균 평점을 고려하여 평점을 예측
+
+-> 유사도를 계산하여 최근접 이웃을 찾고, 이웃의 평점과 평균 평점을 사용하여 예측
+
+- 행렬 분해: SVD, SVD++, NMF
+
+  SVD : 
+
+  행렬 분해 기반의 협업 필터링 알고리즘
+
+  사용자-아이템 평점 행렬을 분해하여 잠재 요인을 추출하고 이를 기반으로 평점을 예측
+
+  -> 행렬 분해를 통해 사용자와 아이템의 잠재 요인을 학습하고, 이를 사용하여 평점을 예측
+
+  NMF :
+
+  비음수 행렬 분해를 사용하는 알고리즘
+
+  사용자와 아이템의 잠재 요인을 추출
+
+  -> 행렬 분해를 통해 비음수 잠재 요인을 학습하고, 이를 사용하여 평점을 예측
+
+- 베이스라인 알고리즘: BaselineOnly
+
+
+
+** 주요모듈
+
+- Dataset 모듈:
+
+Dataset.load_builtin(name): 내장된 데이터셋을 로드
+
+Dataset.load_from_file(file_path, reader): 파일로부터 데이터셋을 로드
+
+Dataset.load_from_df(df, reader): 데이터프레임으로부터 데이터셋을 로드
+
+- Reader 모듈:
+
+Reader(line_format, sep, rating_scale): 사용자 정의 데이터셋을 로드할 때 사용되는 클래스
+
+- Trainset 클래스:
+
+build_full_trainset(): 전체 데이터셋을 학습 데이터로 사용
+
+build_testset(): 전체 데이터셋을 테스트 데이터로 사용
+
+- Prediction 모듈:
+
+accuracy.rmse(predictions): RMSE를 계산
+
+accuracy.mae(predictions): MAE를 계산
+
