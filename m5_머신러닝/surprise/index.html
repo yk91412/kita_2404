@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+</head>
+<body>
+  <h1>영화 추천</h1>
+  <form method="post">
+    <label for="filter">필터 : </label>
+    <select name="filter" id="filter">
+      <option value="user">User id</option>
+      <option value="movie">Movie title</option>
+      <option value="rating">Rating</option>
+    </select>
+    <input type="text" name="query" required>
+    <button type="submit">Search</button>
+  </form>
+</body>
+</html>
