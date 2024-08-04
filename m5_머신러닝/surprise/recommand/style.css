@@ -1,0 +1,42 @@
+body {
+  background: url('/static/image/movie.png') no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(13, 13, 13);
+}
+
+*{
+  font-family: 'Do Hyeon', sans-serif;
+}
+
+.form-control {
+  width: 150px;
+}
+
+.centered-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* 간격 조정 */
+}
+
+.form-inline select,
+.form-inline input,
+.form-inline button {
+  margin-bottom: 0;
+}
+
+.form-inline input {
+  flex: 1;
+}
+
+h2 {
+  margin-bottom: 4rem; /* 제목 아래 여백 */
+  text-shadow: 2px 2px 4px rgba(62, 51, 51, 0.5); /* 그림자 효과 */
+}
