@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>금융 상품 추천 챗봇</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        {% if session.logged_in %}
+            <span>안녕하세요, {{ session.username }}님!</span>
+            <a href="/logout">로그아웃</a>
+        {% else %}
+            <a href="/login">로그인</a>
+            <a href="/register">회원가입</a>
+        {% endif %}
+    </div>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            {% for record in chat_records %}
+                <div class="chat-message">
+                    <strong>{{ record.username }}:</strong> {{ record.message }}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="메시지를 입력하세요...">
+            <button>전송</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

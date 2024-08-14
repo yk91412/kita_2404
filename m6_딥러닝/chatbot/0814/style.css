@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Yeon Sung", system-ui;
+}
+
+.header {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: right;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.header span {
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+    padding: 50px 20px 20px; /* Top padding for header */
+    box-sizing: border-box;
+}
+
+.chat-box {
+    flex: 1; /* Fills the remaining space */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.input-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.input-container input {
+    flex: 1; /* Takes remaining space in the container */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-container button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.input-container button:hover {
+    background-color: #0056b3;
+}
