@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Chatbot</h1>
+<div class="chat-container">
+    <div class="chat-window">
+        {% for chat in chat_history %}
+            {% if loop.index is odd %}
+                <div class="chat-message user-message">{{ chat.message }}</div>
+            {% else %}
+                <div class="chat-message bot-message">{{ chat.message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <form method="POST" action="/" class="chat-input-form">
+        <input type="text" name="message" placeholder="Type your message here..." required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}
