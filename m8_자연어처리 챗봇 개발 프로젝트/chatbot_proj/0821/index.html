@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="date-header">
+    {% if 'user_id' in chat_history %}
+        {{ current_date }}
+    {% endif %}
+</div>
+
+<div class="chat-container">
+    <div class="chat-window">
+        {% for chat in chat_history %}
+            {% if chat.role == 'user' %}
+                <div class="chat-message user-message">{{ chat.message }}</div>
+            {% else %}
+                <div class="chat-message bot-message">{{ chat.message }}</div>
+            {% endif %}
+        {% endfor %}
+        <form method="POST" action="/" class="chat-input-form">
+            <input type="text" name="message" placeholder="메시지를 입력하세요..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
