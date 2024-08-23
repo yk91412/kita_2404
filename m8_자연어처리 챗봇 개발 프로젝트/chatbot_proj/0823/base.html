@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinBuddy Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            FinBuddy
+        </div>
+        {% if 'user_id' in session %}
+        <h3>대화 요약</h3>
+        <ul>
+            {% for summary in summaries %}
+            <li><a href="{{ url_for('show_summary', summary_id=summary.id) }}">{{ summary.date }} - {{ summary.summary }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <nav>
+        <div class="nav-right">
+            <a href="{{ url_for('index') }}">Home</a>
+            {% if 'user_id' in session %}
+                <a href="{{ url_for('logout') }}">로그아웃</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">로그인</a>
+                <a href="{{ url_for('register') }}">회원가입</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    {% block chat_input %}{% endblock %}
+</body>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>
