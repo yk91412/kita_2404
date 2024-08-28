@@ -1,0 +1,11 @@
+| **비교 항목**           | **PyTorch**                           | **TensorFlow/Keras**                |
+|------------------------|---------------------------------------|-------------------------------------|
+| **계산 그래프**         | 동적 계산 그래프 (Dynamic Graph)       | 정적 계산 그래프 (Static Graph) + 동적 지원 (Eager Execution) |
+| **코딩 스타일**         | Pythonic, 간결하고 직관적             | Keras: 간결, TensorFlow: 다소 복잡함 |
+| **배포 및 확장성**      | TorchScript로 배포 가능                | TensorFlow Serving, Lite, JS 등 다양한 배포 옵션 |
+| **자동 미분 (Autograd)**| 매우 직관적                            | 자동 미분 제공하지만, PyTorch만큼 직관적이지 않음 |
+| **성능**                | 연구 중심, 모델 실험에 적합            | 대규모 배포 환경에서 강력한 성능 제공 |
+| **커뮤니티**            | 연구 중심, 최신 논문 구현 많이 제공    | 산업계와 연구계 모두 널리 사용됨    |
+| **시각화 도구**         | TensorBoard 대안은 부족함              | TensorBoard 제공, 강력한 시각화 도구 |
+| **모바일 및 웹 지원**   | 비교적 미약한 지원                    | TensorFlow Lite, TensorFlow.js 등 폭넓은 지원 |
+| **프로덕션 환경 지원**  | TorchServe로 배포 가능하지만 한정적     | TensorFlow Extended(TFX)로 대규모 배포 지원 |
