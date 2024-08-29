@@ -1,0 +1,89 @@
+
+
+데이터 작업을 위한 기본 요소
+- torch.utils.data.Dataloader
+- torch.utils.data.Dataset
+
+Dataset은 샘플과 정답을 저장
+DataLoader는 Dataset을 순회 가능한 객체로 감싼다
+
+
+
+1. 데이터 셋 불러오기
+
+training_data
+= datasets.데이터셋(root = 'data', train=t/f, download = True, transform=~)
+test_data
+
+** 매개변수
+
+root : 학습/테스트 데이터가 저장되는 경로
+train : 학습용 또는 테스트용 데이터셋 여부를 지정
+download=True : root 에 데이터가 없는 경우 인터넷에서 다운로드
+transform, target_transform : 특징(feature)과 정답(label) 변형(transform)을 지정
+=> transform  = ToTensor(), tansform
+
+
+  ** ToTensor
+
+  이미지 데이터를 pytorch에서 사용 가능한 tensor로 변환
+
+  ** transform
+
+  ToTensor()를 포함하여 데이터의 다양한 전처리 및 증강 작업을 조합할 수 있는 방법
+  -> ex) Normalize(정규화), Resize
+
+
+2. 데이터로더 생성
+
+학습 데이터와 테스트 데이터를 배치로 로딩
+
+train_dataloader
+= DataLoader(training_data, batch_size=batch_size, shuffle = T/F)
+test_dataloader
+
+
+3. 모델 아키텍처 정의
+
+torch.nn.Module 클래스 기반
+
+
+** 순전파
+output = model(input_data)
+
+** 역전파
+loss.backward()
+-> 모델의 매개변수(가중치)에 대해 손실 함수의 기울기 계산
+
+계산된 기울기는 parameter.grad 속성에 저장
+
+** 손실함수 계산
+loss = loss_fn(output, target)
+
+** 옵티마이저를 사용한 가중치 갱신
+
+optimizer.step()
+
+
+*** requires_grad ***
+requires_gra = True
+=> 자동 미분
+
+with torch.no_grad():
+  output = model(input_data) <- 역전파 없이 순전파만 수행
+
+
+
+4. 손실함수 및 최적화 알고리즘 지정
+
+loss_fn = nn.CrossEntroopyLoss()
+optimizer = torch.optim.
+
+5. 모델 훈련
+
+
+
+6. 최고의 모델 불러오기
+
+
+
