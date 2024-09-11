@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="chat-container">
+        <div class="chat-window" id="chat-window">
+
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block chat_input %}
+<div class="chat-input-container">
+    <form method="POST" action="/" class="chat-input-form">
+        <input type="text" name="message" placeholder="메시지를 입력하세요..." required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}
