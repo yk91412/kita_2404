@@ -1,0 +1,113 @@
+
+### 기본적인 작업
+
+cv2.imread() : 이미지 읽기
+cv2.imshow() : 이미지 화면에 표시
+cv2.imwrite() : 이미 저장
+
+-> BGR로 색을 나타냄
+
+** 이미지 읽기 **
+img = cv2.imread('이미지 이름')
+
+** 이미지 표시 **
+plt.imshow(cv2.cvtColor(img, cv2.~))
+
+
+=> cv2.cvtColor()
+색상 공간 변환: BGR에서 다른 색상 공간(RGB, Grayscale, HSV 등)으로 변환하는 방법
+
+
+** colab에서는 cv2.imshow()함수 대신 cv2_imshow() 사용
+
+
+========================================================================
+
+
+1. OpenCV 방식
+
+### urlretrieve 
+
+url을 통해서 이미지를 다운로드
+
+import urllib.request as req
+
+req.urlretrieve(url, '저장할 이름')
+
+
+
+
+2. imageio 방식
+
+img = imageio.imread(url)
+
+=> imageio를 사용하여 url 에서 이미지를 직접 로드
+
+
+
+3. OpenCV로 URL 이미지 읽기
+
+resp = req.urlopen(url)
+
+image = np.asarray(bytearray(resp.read()), dytpe='uint8')
+
+=> bytearray : 가변적인 바이트 배열로 변환 => asarray : 주어진 입력을 numpy 배열로 변환
+
+img = cv2.imdecode(image, cv2.IMREAD_COLOR)
+
+
+
+==================================================================================
+
+* 이미지 사이즈 변경
+
+### resize
+
+img = cv2.imread()
+
+width = ~
+height = ~
+
+resize_img = cv2.resize(img, (width,height))
+cv2_imshow(resize_img)
+
+==================================================================================
+
+PIL : 파이썬 이미지 처리 라이브러리
+
+from PIL import Image
+from io import BytesIO
+import requests
+
+response = requests.get(url)
+pic = Image.open(BytesIO(response.content))
+
+=> ByteIO는 바이너리 데이터를 읽고 쓰는데 사용되는 파일과 유사한 객체
+
+
+==================================================================================
+
+** 그래프 그리기
+
+import cv2
+
+1. 선
+cv2.line(배경, (시작점), (끝점),(색상),두께)
+
+ex) 
+img = cv2.line(img, (0,0),(511,511),(255,0,0),3)
+
+* 배경 만드는 법 *
+
+img = np.zeros((512,512,3),np.uint8)
+img.fill(255) => 흰색 / 검정색은 0이나 굳이 안해도 zeros로 만들었으므로 검정색임
+plt.imshow(img) 
+
+
+2. 사각형
+
+cv2.rectangle(배경, 
+
+
+
+
