@@ -1,0 +1,179 @@
+	세팅
+
+1. file - build settings
+=> android switch platform / add open scenes 클릭
+
+2. player settings
+
+player 
+
+- auto graphics api 제거
+그 안에 Vulkan 제거
+
+- dynamic batching 체크
+
+- minimum api level : 24로 설정
+
+
+- scripting backend : IL2cpp로 설정
+
+
+- api compatibility level : .net framework로 설정
+
+
+- ARMv7 제거 / ARM64로 설정
+
+
+- active input handling : input manaer(old)인지 확인(default임)
+
+
+
+2.1. XR Plugin 클릭
+
+install후
+
+- arcore 클릭
+
+
+
+
+3. window - package manager 클릭
+
+좌측 상단 packages : unity registry로 설정
+
+- ar foundation 설치
+
+
+
+
+	기본 셋팅
+
+1. main camera 삭제
+
+2. ar session origin 생성
+
+3. ar session 생성
+
+
+
+4. assets에 만든 맵 폴더 input
+
+4.1. 맵만 Hierachy에 끌고오기
+
+
+5. 맵 position 설정(타겟하고싶은 위치에 ar session이 오도록)
+
+
+	시작위치 생성
+1. Hierachy 에 cube 생성
+
+-> transform 리셋 후 원하는 위치에 옮기기
+
+
+2. assets에 materials 폴더 생성
+
+-> material 생성 후 target으로 이름 설정
+
+-> Albedo크릭 후 색상 설정
+
+-> 드래그해서 hierachy에 cube에 삽입
+(크기 조정, 위치 조정)
+
+
+	타겟 위치 생성
+
+1. Hierachy에 create empty 클릭 후 Indicator로 이름 변경(position 리셋해야함)
+
+2. 그 안에 3D object - sphere 생성 후 IndicatorSphere로 이름 변경
+
+3. materials폴더에서 material 생성 후 Indicator로 이름 변경
+
+4. 만든 material 드래그해서 IndicatorSphere에 두기
+(크기 조정, 위치 조정)
+
+
+	추가 설정
+
+1. Indicator 클릭 후 add component
+
+2. position constraint 추가 후 is active 클릭
+
+ 	2.1. constraint settings 클릭후 freeze position y 클릭 제거
+
+ 	2.2. sources +해서 ar camera 드래그해서 추가
+
+3. line renderer 추가
+
+
+	3.1. materials 폴더에서 새로운 material 추가
+
+	3.2. shader - until - color - 원하는 컬러 클릭
+
+
+	3.3. line renderer에서 material부분에 방금 만든 material 드래그 해서 추가
+
+	3.4. positions에서 z 0으로 만들기
+
+	3.5. width 0.3정도로 맞추기
+
+	3.6. lighting off / 밑에 클릭 제거
+
+4. Indicator에 camera 추가 후 TopdownCamera로 이름 변경
+
+
+	4.1. rotation x : 90, position y : 5
+
+	4.2. scale : 모두 1
+
+
+	4.3. prejection - Orthographic
+
+	4.4. 밑에 size 5로 설정
+
+
+	4.5. culling mask - ul 제거
+
+5. assets폴더에 RenderTexture 폴더 생성
+
+	5.1. create - render texture 생성 후 MiniMap으로 이름 변경
+
+	5.2. topdowncamera - target texture에 minimap 드래그 하기
+
+6. add layer해서 4쯤에 maplyer만들고 map은 layer을 그걸로 변경
+
+
+7. ul - raw-image 추가후 MiniMapCanvas로 이름 변경
+
+
+
+8. RawImage 클릭후 position 변경
+
+	Pos Y : 300, Width : 500, Height : 500 나머지는 0
+
+	Scale 모두 1
+	8.1. 그림 바꾸기 제일 밑 줄에 빨간색으로 
+
+	8.2. Texture에 MiniMap 드래그
+
+
+9. assets 폴더에서 script 생성후
+
+SetNavigationTarget이름 으로 C# script 생성
+
+	9.1. Indicator에 스크립트 드래그
+
+
+	9.2. Topdown camera부분에 TopdownCamera 드래그
+
+	9.3. 그밑에 Target 드래그
+
+
+
+10. ar camera culling mask에서 map부분 제거
+====
+
+다 만들고나서 window - ai - navigation
+bake탭에서 agent radius 0.15로 설정 후 bake
+
+
+
