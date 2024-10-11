@@ -1,20 +1,25 @@
+### Flask 서버(백엔드)
 
-가상환경 생성
+1. 가상환경 생성
 python3 -m venv myenv
 
-가상환경 활성화
+2. 가상환경 활성화
 source myenv/bin/activate
 
-패키지 설치
+3. 패키지 설치
 pip install flask flask-cors ultralytics pillow
 
-best.pt파일 추가
+4. app.py작성
 
-flask 서버 실행
+5. best.pt파일 추가
+
+6. flask 서버 실행
 python app.py
 
 
 ========================================================
+
+### React 개발 서버(프론트엔드)
 
 1. react 앱 생성
 npx create-react-app client
