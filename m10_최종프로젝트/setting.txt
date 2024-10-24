@@ -1,3 +1,4 @@
+
 	세팅
 
 1. file - build settings
@@ -6,6 +7,8 @@
 2. player settings
 
 player 
+
+color space - gamma로 변경
 
 - auto graphics api 제거
 그 안에 Vulkan 제거
@@ -58,7 +61,7 @@ install후
 
 4. assets에 만든 맵 폴더 input
 
-4.1. 맵만 Hierachy에 끌고오기
+4.1. 맵만 Hierachy에 끌고오기(static 체크)
 
 
 5. 맵 position 설정(타겟하고싶은 위치에 ar session이 오도록)
